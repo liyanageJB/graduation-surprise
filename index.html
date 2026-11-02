@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d21">
 <title>Our Little Universe ♡</title>
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -17,13 +18,9 @@
   --cream: #fff6e9;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -38,25 +35,13 @@ h1, h2 {
   line-height: 1.25;
 }
 
-h1 {
-  font-size: clamp(42px, 8vw, 82px);
-}
+h1 { font-size: clamp(42px, 8vw, 82px); }
+h2 { font-size: clamp(30px, 6vw, 52px); }
 
-h2 {
-  font-size: clamp(30px, 6vw, 52px);
-}
+p { line-height: 1.85; }
 
-p {
-  line-height: 1.9;
-}
-
-.gold {
-  color: var(--gold);
-}
-
-.pink {
-  color: var(--pink);
-}
+.gold { color: var(--gold); }
+.pink { color: var(--pink); }
 
 .script {
   font-family: "Great Vibes", cursive;
@@ -85,7 +70,7 @@ section > * {
 
 .section-tag {
   font-size: 11px;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   color: var(--gold);
   text-transform: uppercase;
 }
@@ -132,7 +117,7 @@ button {
 
 .glass {
   width: min(740px, 100%);
-  padding: 42px 30px;
+  padding: 40px 28px;
   border-radius: 25px;
   background: #ffffff0c;
   border: 1px solid #e8c88755;
@@ -140,9 +125,7 @@ button {
   backdrop-filter: blur(12px);
 }
 
-.glass p {
-  color: #d7ddec;
-}
+.glass p { color: #d7ddec; }
 
 /* OPENING */
 
@@ -155,25 +138,17 @@ button {
 }
 
 .hero-heart {
-  font-size: 100px;
+  font-size: 85px;
   color: var(--pink);
   text-shadow: 0 0 40px #ffabc880;
   animation: heartbeat 2.2s infinite;
 }
 
 @keyframes heartbeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-  15% {
-    transform: scale(1.15);
-  }
-  30% {
-    transform: scale(1);
-  }
-  45% {
-    transform: scale(1.08);
-  }
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
 }
 
 .hero p:not(.section-tag) {
@@ -193,69 +168,99 @@ button {
 
 @keyframes rise {
   0% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(0);
     opacity: 0;
   }
-  15% {
-    opacity: 0.6;
-  }
-  85% {
-    opacity: 0.5;
-  }
+  15% { opacity: 0.6; }
+  85% { opacity: 0.5; }
   100% {
     transform: translateY(-110vh) rotate(45deg);
     opacity: 0;
   }
 }
 
-/* PHOTO GALLERY */
+/* PHOTO FRAMES */
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin: 35px auto;
-  perspective: 1000px;
-}
-
-.memory {
-  width: 210px;
+.photo-frame {
+  width: min(360px, 90%);
+  margin: 25px auto;
+  padding: 10px 10px 18px;
   background: #fff1dc;
-  color: #26304a;
-  padding: 10px 10px 20px;
-  border-radius: 5px;
-  box-shadow: 0 20px 45px #0008;
-  transition: transform 0.5s;
+  color: #29344e;
+  border-radius: 8px;
+  box-shadow: 0 18px 50px #0007;
+  transform: rotate(-3deg);
+  transition: transform 0.4s ease;
 }
 
-.memory:nth-child(1) {
-  transform: rotate(-7deg);
+.photo-frame:hover {
+  transform: rotate(0) scale(1.04);
 }
 
-.memory:nth-child(2) {
-  transform: translateY(15px) rotate(5deg);
-}
-
-.memory:nth-child(3) {
-  transform: rotate(-4deg);
-}
-
-.memory:hover {
-  transform: translateY(-18px) rotate(0deg) scale(1.07);
-}
-
-.memory img {
+.photo-frame img {
+  display: block;
   width: 100%;
-  height: 230px;
+  height: 300px;
   object-fit: cover;
-  background: #b4b5c2;
+  border-radius: 3px;
 }
 
-.memory p {
-  font-family: "Great Vibes", cursive;
-  font-size: 26px;
+.photo-frame p {
   margin: 10px 0 0;
+  color: #29344e !important;
+  font-family: "Great Vibes", cursive;
+  font-size: 28px;
+  text-align: center;
+}
+
+.extra-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  width: min(950px, 100%);
+  margin: 35px auto;
+}
+
+.extra-photo {
+  padding: 10px 10px 18px;
+  background: #fff1dc;
+  border-radius: 6px;
+  box-shadow: 0 15px 40px #0007;
+  transition: transform 0.4s;
+  min-width: 0;
+}
+
+.extra-photo:nth-child(odd) {
+  transform: rotate(-3deg);
+}
+
+.extra-photo:nth-child(even) {
+  transform: rotate(3deg);
+}
+
+.extra-photo:hover {
+  transform: translateY(-12px) rotate(0)
+    scale(1.04);
+}
+
+.extra-photo img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.extra-photo p {
+  color: #29344e !important;
+  font-family: "Great Vibes", cursive;
+  font-size: 25px;
+  margin: 10px 0 0;
+  text-align: center;
+}
+
+.two-photos {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 620px;
 }
 
 /* TEN REASONS */
@@ -314,6 +319,39 @@ button {
   }
 }
 
+/* NEW JOB */
+
+.job-section {
+  background: radial-gradient(
+    ellipse at center,
+    #102d43 0%,
+    #080d21 76%
+  );
+}
+
+.job-icon {
+  font-size: 95px;
+  animation: float 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 25px #7ac7ff77);
+}
+
+.job-badge {
+  display: inline-block;
+  padding: 10px 18px;
+  margin: 15px 0;
+  border: 1px solid #7ac7ff77;
+  border-radius: 30px;
+  background: #7ac7ff18;
+  color: #b9e7ff;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.job-highlight {
+  color: #b9e7ff;
+  font-weight: 700;
+}
+
 /* ANNIVERSARY */
 
 .anniversary {
@@ -351,9 +389,7 @@ button {
   color: #d3d9e9;
 }
 
-#countdownNote {
-  color: var(--pink);
-}
+#countdownNote { color: var(--pink); }
 
 /* ENVELOPE */
 
@@ -402,9 +438,7 @@ button {
   z-index: 0;
 }
 
-.envelope.open::after {
-  opacity: 0;
-}
+.envelope.open::after { opacity: 0; }
 
 .love-letter {
   display: none;
@@ -424,9 +458,7 @@ button {
   text-align: center;
 }
 
-.love-letter p {
-  line-height: 2;
-}
+.love-letter p { line-height: 2; }
 
 @keyframes letterReveal {
   from {
@@ -439,7 +471,7 @@ button {
   }
 }
 
-/* FUTURE DREAMS */
+/* FUTURE */
 
 .dreams {
   display: flex;
@@ -464,9 +496,7 @@ button {
   background: #ffffff18;
 }
 
-.dream span {
-  font-size: 40px;
-}
+.dream span { font-size: 40px; }
 
 /* FINAL */
 
@@ -523,34 +553,34 @@ button {
 }
 
 @media (max-width: 650px) {
-  .glass {
-    padding: 28px 20px;
-  }
+  .glass { padding: 28px 20px; }
 
-  .reason-grid {
-    gap: 7px;
-  }
+  .reason-grid { gap: 7px; }
 
   .reason {
     font-size: 24px;
     border-radius: 10px;
   }
 
-  .memory {
-    width: 145px;
-  }
+  .extra-gallery { gap: 12px; }
 
-  .memory img {
-    height: 160px;
-  }
+  .extra-photo img { height: 165px; }
+
+  .extra-photo p { font-size: 21px; }
+
+  .photo-frame img { height: 260px; }
 
   .dream {
     width: 145px;
     padding: 20px 12px;
   }
 
-  .dream p {
-    font-size: 13px;
+  .dream p { font-size: 13px; }
+}
+
+@media (max-width: 500px) {
+  .extra-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -582,7 +612,7 @@ onclick="toggleMusic()">
 
 <audio id="music" src="music.mp3" loop></audio>
 
-<!-- 1. OPENING -->
+<!-- 1. OPENING: PHOTO 1 -->
 
 <section class="hero" id="home">
 
@@ -597,9 +627,13 @@ onclick="toggleMusic()">
     <span class="gold">Person</span>
   </h1>
 
-  <div class="script">
-    My Love ♡
+  <div class="photo-frame">
+    <img src="photo1.jpg"
+         alt="My favourite person">
+    <p>You are my favourite hello ♡</p>
   </div>
+
+  <div class="script">My Love ♡</div>
 
   <p>
     Out of everyone in this world,
@@ -670,7 +704,7 @@ onclick="toggleMusic()">
 
 </section>
 
-<!-- 3. PHOTO MEMORIES -->
+<!-- 3. MEMORIES: PHOTOS 2-7 -->
 
 <section id="memories">
 
@@ -688,31 +722,43 @@ onclick="toggleMusic()">
     I'd keep all the ones with you.
   </p>
 
-  <div class="gallery reveal">
+  <div class="extra-gallery reveal">
 
-    <div class="memory">
-      <img src="photo1.jpg"
-           alt="Our first special memory">
-      <p>My favourite day ♡</p>
+    <div class="extra-photo">
+      <img src="photo2.jpg" alt="Our memory">
+      <p>Our little beginning ♡</p>
     </div>
 
-    <div class="memory">
-      <img src="photo2.jpg"
-           alt="A lovely moment together">
-      <p>Just us two ♡</p>
+    <div class="extra-photo">
+      <img src="photo3.jpg" alt="Our memory">
+      <p>My happy place ♡</p>
     </div>
 
-    <div class="memory">
-      <img src="photo3.jpg"
-           alt="Another beautiful memory">
-      <p>Forever special ♡</p>
+    <div class="extra-photo">
+      <img src="photo4.jpg" alt="Our memory">
+      <p>That beautiful day ♡</p>
+    </div>
+
+    <div class="extra-photo">
+      <img src="photo5.jpg" alt="Our memory">
+      <p>My favourite smile ♡</p>
+    </div>
+
+    <div class="extra-photo">
+      <img src="photo6.jpg" alt="Our memory">
+      <p>Just you and me ♡</p>
+    </div>
+
+    <div class="extra-photo">
+      <img src="photo7.jpg" alt="Our memory">
+      <p>A moment to remember ♡</p>
     </div>
 
   </div>
 
-  <p class="script reveal">
+  <div class="script reveal">
     Every picture tells our story.
-  </p>
+  </div>
 
   <button class="btn" onclick="go('reasons')">
     Why I Love You →
@@ -743,31 +789,22 @@ onclick="toggleMusic()">
 
     <button class="reason"
       onclick="showReason(0,this)">♡</button>
-
     <button class="reason"
       onclick="showReason(1,this)">♡</button>
-
     <button class="reason"
       onclick="showReason(2,this)">♡</button>
-
     <button class="reason"
       onclick="showReason(3,this)">♡</button>
-
     <button class="reason"
       onclick="showReason(4,this)">♡</button>
-
     <button class="reason"
       onclick="showReason(5,this)">♡</button>
-
     <button class="reason"
       onclick="showReason(6,this)">♡</button>
-
     <button class="reason"
       onclick="showReason(7,this)">♡</button>
-
     <button class="reason"
       onclick="showReason(8,this)">♡</button>
-
     <button class="reason"
       onclick="showReason(9,this)">♡</button>
 
@@ -784,7 +821,7 @@ onclick="toggleMusic()">
 
 </section>
 
-<!-- 5. GRADUATION -->
+<!-- 5. GRADUATION: PHOTOS 8-9 -->
 
 <section id="graduation">
 
@@ -801,6 +838,22 @@ onclick="toggleMusic()">
       <span class="gold">Proud</span>
       Of You
     </h2>
+
+    <div class="extra-gallery two-photos">
+
+      <div class="extra-photo">
+        <img src="photo8.jpg"
+             alt="Graduation photo">
+        <p>My handsome graduate 🎓</p>
+      </div>
+
+      <div class="extra-photo">
+        <img src="photo9.jpg"
+             alt="Graduation memory">
+        <p>So proud of you ♡</p>
+      </div>
+
+    </div>
 
     <p>
       Happy Higher Diploma Convocation,
@@ -849,13 +902,116 @@ onclick="toggleMusic()">
 
   </div>
 
-  <button class="btn" onclick="go('anniversary')">
-    Almost 6 Months of Us ❤️
+  <button class="btn" onclick="go('newJob')">
+    Another Amazing Achievement 💻
   </button>
 
 </section>
 
-<!-- 6. ANNIVERSARY -->
+<!-- 6. NEW JOB: PHOTO 10 -->
+
+<section class="job-section" id="newJob">
+
+  <div class="glass reveal">
+
+    <div class="job-icon">💻</div>
+
+    <p class="section-tag">
+      A BRAND NEW CHAPTER
+    </p>
+
+    <h2>
+      Congratulations on Your
+      <span class="gold">New Job!</span>
+    </h2>
+
+    <div class="job-badge">
+      FERENTINO TYRES · IT TEAM
+    </div>
+
+    <div class="photo-frame">
+      <img src="photo10.jpg"
+           alt="Celebrating your new IT job">
+      <p>My favourite IT boy ♡</p>
+    </div>
+
+    <p>
+      My love, congratulations on
+      joining the
+      <span class="job-highlight">
+        Ferentino Tyres IT Team!
+      </span>
+    </p>
+
+    <p>
+      I am so, so proud of you, baby!
+      Seeing you take this exciting
+      step into your career makes
+      my heart incredibly happy.
+    </p>
+
+    <p>
+      You deserve this opportunity,
+      and I hope you always remember
+      how capable, talented,
+      and hardworking you are.
+    </p>
+
+    <p>
+      I know starting something new
+      can bring excitement,
+      challenges, and so much to learn.
+      But I believe in you,
+      and I know you have so much
+      to offer.
+    </p>
+
+    <p>
+      I hope your new workplace
+      brings you wonderful experiences,
+      great friendships,
+      valuable lessons,
+      and many opportunities to grow.
+    </p>
+
+    <p>
+      From your Higher Diploma
+      to this new beginning
+      in the IT world,
+      watching you move forward
+      makes me feel so proud.
+    </p>
+
+    <p>
+      And no matter how busy life gets,
+      or how many new chapters begin,
+      I'll always be cheering
+      for you and your dreams.
+    </p>
+
+    <div class="script">
+      Go shine, my IT boy ♡ ✨
+    </div>
+
+    <p class="gold">
+      Congratulations, baby.
+      This is just the beginning
+      of something wonderful! ❤️
+    </p>
+
+    <button class="btn" onclick="celebrate()">
+      Celebrate Your New Job 🎉
+    </button>
+
+  </div>
+
+  <button class="btn" onclick="go('anniversary')">
+    Now, Something About Us ❤️
+  </button>
+
+</section>
+
+<!-- 7. ANNIVERSARY: PHOTOS 11-13 -->
 
 <section class="anniversary" id="anniversary">
 
@@ -872,6 +1028,28 @@ onclick="toggleMusic()">
       <span class="pink">6 Months</span>
       of Us
     </h2>
+
+    <div class="extra-gallery">
+
+      <div class="extra-photo">
+        <img src="photo11.jpg"
+             alt="Our love story">
+        <p>Where it began ♡</p>
+      </div>
+
+      <div class="extra-photo">
+        <img src="photo12.jpg"
+             alt="Our memories">
+        <p>Every little moment ♡</p>
+      </div>
+
+      <div class="extra-photo">
+        <img src="photo13.jpg"
+             alt="Almost six months">
+        <p>Almost six months of us ♡</p>
+      </div>
+
+    </div>
 
     <div class="script">
       And I'm still falling for you ♡
@@ -955,7 +1133,7 @@ onclick="toggleMusic()">
 
 </section>
 
-<!-- 7. SECRET LOVE LETTER -->
+<!-- 8. SECRET LOVE LETTER -->
 
 <section id="letterSection">
 
@@ -1029,6 +1207,34 @@ onclick="toggleMusic()">
       without even trying.
       You make simple moments
       feel unforgettable.
+    </p>
+
+    <p>
+      And seeing you achieve
+      such wonderful things lately
+      makes me even happier.
+    </p>
+
+    <p>
+      Your Higher Diploma Convocation,
+      your new job with the
+      Ferentino Tyres IT Team,
+      and all the beautiful things
+      you're working towards...
+      I'm so proud of you.
+    </p>
+
+    <p>
+      But please remember,
+      I don't love you because
+      of your achievements.
+    </p>
+
+    <p>
+      I love you for who you are,
+      and I would be proud of you
+      even on the days
+      when things don't go perfectly.
     </p>
 
     <p>
@@ -1117,7 +1323,7 @@ onclick="toggleMusic()">
 
 </section>
 
-<!-- 8. OUR FUTURE -->
+<!-- 9. OUR FUTURE: PHOTOS 14-15 -->
 
 <section id="future">
 
@@ -1175,6 +1381,22 @@ onclick="toggleMusic()">
 
   </div>
 
+  <div class="extra-gallery two-photos reveal">
+
+    <div class="extra-photo">
+      <img src="photo14.jpg"
+           alt="Our beautiful memories">
+      <p>More adventures await ♡</p>
+    </div>
+
+    <div class="extra-photo">
+      <img src="photo15.jpg"
+           alt="Our love story">
+      <p>My forever favourite ♡</p>
+    </div>
+
+  </div>
+
   <div class="script reveal">
     So many more memories to make ♡
   </div>
@@ -1185,7 +1407,7 @@ onclick="toggleMusic()">
 
 </section>
 
-<!-- 9. FINAL SURPRISE -->
+<!-- 10. FINAL SURPRISE -->
 
 <section class="final" id="finale">
 
@@ -1237,9 +1459,17 @@ onclick="toggleMusic()">
     </p>
 
     <p>
-      Happy Convocation, my love.
-      And happy almost-six-month anniversary
-      to us. ❤️
+      Happy Higher Diploma Convocation,
+      congratulations on your new job
+      with the Ferentino Tyres IT Team,
+      and happy almost-six-month
+      anniversary to us. ❤️
+    </p>
+
+    <p>
+      I'm so proud of you, baby.
+      And I'm even happier
+      that I get to love you.
     </p>
 
     <button class="btn" onclick="go('home')">
@@ -1253,21 +1483,18 @@ onclick="toggleMusic()">
 <script>
 
 /* =====================================
-   PERSONALISE YOUR ANNIVERSARY DATE
-   =====================================
+   YOUR ANNIVERSARY DATE
 
-   Replace the empty value below with
-   your real six-month anniversary date.
+   Enter your actual 6-month
+   anniversary date below.
 
    Example for Sri Lanka:
    "2026-12-15T00:00:00+05:30"
-
-   Leave it empty until you know the date.
-*/
+===================================== */
 
 const ANNIVERSARY_DATE = "";
 
-/* SMOOTH NAVIGATION */
+/* NAVIGATION */
 
 function go(id) {
   document.getElementById(id)
@@ -1281,7 +1508,7 @@ function startStory() {
   go("love");
 }
 
-/* SCROLL REVEAL ANIMATION */
+/* SCROLL REVEAL */
 
 const observer = new IntersectionObserver(
   entries => {
@@ -1291,9 +1518,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  {
-    threshold: 0.12
-  }
+  { threshold: 0.12 }
 );
 
 document.querySelectorAll(".reveal")
@@ -1303,7 +1528,6 @@ document.querySelectorAll(".reveal")
 
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
-
 let stars = [];
 
 function resizeStars() {
@@ -1311,7 +1535,7 @@ function resizeStars() {
   canvas.height = window.innerHeight;
 
   stars = Array.from(
-    {length: 95},
+    { length: 95 },
     () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -1324,10 +1548,7 @@ function resizeStars() {
 
 function drawStars(time) {
   ctx.clearRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
+    0, 0, canvas.width, canvas.height
   );
 
   stars.forEach(s => {
@@ -1339,11 +1560,7 @@ function drawStars(time) {
 
     ctx.beginPath();
     ctx.arc(
-      s.x,
-      s.y,
-      s.size,
-      0,
-      Math.PI * 2
+      s.x, s.y, s.size, 0, Math.PI * 2
     );
 
     ctx.fillStyle =
@@ -1358,8 +1575,7 @@ function drawStars(time) {
 resizeStars();
 
 window.addEventListener(
-  "resize",
-  resizeStars
+  "resize", resizeStars
 );
 
 requestAnimationFrame(drawStars);
@@ -1399,27 +1615,18 @@ function createHeart() {
 
 setInterval(createHeart, 900);
 
-/* TEN REASONS I LOVE YOU */
+/* TEN REASONS */
 
 const reasons = [
   "I love your smile. It makes my world brighter. ♡",
-
   "I love the way you make me laugh, even on ordinary days.",
-
   "I love your kindness and your beautiful heart.",
-
   "I love our silly little conversations.",
-
   "I love how special ordinary moments feel when I'm with you.",
-
   "I love your determination and all the dreams you have.",
-
   "I love every memory we've made together.",
-
   "I love all your little habits that make you who you are.",
-
   "I love how grateful I feel to have you in my life.",
-
   "And most of all, I love you simply because you're YOU. ❤️"
 ];
 
@@ -1503,7 +1710,7 @@ function updateCountdown() {
   if (Number.isNaN(target)) {
     countdown.style.display = "none";
     note.textContent =
-      "Please check the anniversary date in the code.";
+      "Please check the anniversary date.";
     return;
   }
 
@@ -1541,15 +1748,15 @@ function updateCountdown() {
 
   document.getElementById("hours")
     .textContent =
-      String(hours).padStart(2,"0");
+      String(hours).padStart(2, "0");
 
   document.getElementById("minutes")
     .textContent =
-      String(minutes).padStart(2,"0");
+      String(minutes).padStart(2, "0");
 
   document.getElementById("seconds")
     .textContent =
-      String(seconds).padStart(2,"0");
+      String(seconds).padStart(2, "0");
 
   note.textContent =
     "Every second brings us closer to our day ♡";
@@ -1558,7 +1765,7 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-/* SECRET LETTER */
+/* SECRET LOVE LETTER */
 
 let letterOpened = false;
 
@@ -1606,7 +1813,7 @@ function burstHearts(count) {
   }
 }
 
-/* MUSIC */
+/* BACKGROUND MUSIC */
 
 const music =
   document.getElementById("music");
@@ -1633,6 +1840,5 @@ async function toggleMusic() {
 }
 
 </script>
-
 </body>
 </html>
