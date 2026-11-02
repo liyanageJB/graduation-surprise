@@ -3,184 +3,492 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Favourite Graduate 💙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Little Universe For You ♡</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap');
+
 :root {
-  --navy: #080e21;
-  --blue: #15264b;
-  --gold: #e8c67b;
-  --cream: #fff4de;
+  --bg: #070b1d;
+  --blue: #152448;
+  --gold: #e8c887;
+  --pink: #ffabc8;
+  --white: #fff6eb;
 }
+
 * { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
-  background: var(--navy);
-  color: var(--cream);
-  font-family: Georgia, serif;
-  text-align: center;
+  color: var(--white);
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
 }
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(42px, 8vw, 85px);
+  line-height: 1.18;
+}
+
+h2 {
+  font-size: clamp(32px, 6vw, 55px);
+}
+
+p { line-height: 1.9; }
+
+.gold { color: var(--gold); }
+.pink { color: var(--pink); }
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  color: var(--pink);
+  font-size: clamp(36px, 6vw, 65px);
+}
+
 section {
+  min-height: 100vh;
   min-height: 100svh;
-  padding: 90px 20px;
+  padding: 100px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   position: relative;
 }
-h1 {
-  font-size: clamp(45px, 9vw, 85px);
-  line-height: 1.1;
-  margin: 20px 0;
+
+section > * {
+  position: relative;
+  z-index: 2;
 }
-h2 {
-  font-size: clamp(32px, 6vw, 55px);
-  margin: 15px 0;
+
+.section-tag {
+  letter-spacing: 4px;
+  color: var(--gold);
+  font-size: 11px;
+  text-transform: uppercase;
 }
-p {
-  max-width: 550px;
-  line-height: 1.8;
-  font-size: 17px;
-}
-.gold { color: var(--gold); }
+
 button {
-  background: linear-gradient(120deg,#f8dfa2,#c99d4b);
-  border: 0;
-  border-radius: 30px;
-  padding: 15px 25px;
-  margin: 20px 0;
-  color: #14213b;
-  font-size: 15px;
-  font-weight: bold;
+  border: none;
   cursor: pointer;
-  transition: transform .3s;
+  font-family: inherit;
 }
-button:hover { transform: scale(1.06); }
+
+.btn {
+  padding: 16px 30px;
+  margin: 25px 0;
+  background: linear-gradient(120deg,#fff0bd,#c99b50);
+  color: #17213b;
+  border-radius: 40px;
+  font-weight: 700;
+  transition: .35s;
+  box-shadow: 0 5px 30px #e8c88735;
+}
+
+.btn:hover {
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 10px 45px #e8c88770;
+}
+
+/* STAR BACKGROUND */
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: #3453a7;
+  filter: blur(110px);
+  opacity: .22;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 1s, transform 1s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* HERO */
 .hero {
   background: radial-gradient(
     ellipse at center,
-    #263e77 0%,
-    #080e21 75%
+    #1c315e 0%,
+    #070b1d 72%
   );
 }
-.cap {
-  font-size: 105px;
-  animation: float 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 25px #e8c67b60);
+
+.hero-heart {
+  font-size: 110px;
+  color: var(--pink);
+  text-shadow: 0 0 45px #ffabc880;
+  animation: heartbeat 2.2s infinite;
 }
-@keyframes float {
-  0%,100% {
-    transform: translateY(0) rotate(-7deg);
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  15% { transform: scale(1.14); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+
+.hero h1 { margin: 15px 0; }
+
+.hero p {
+  max-width: 540px;
+  color: #cbd3e7;
+}
+
+/* FLOATING HEARTS */
+.floating-heart {
+  position: fixed;
+  bottom: -40px;
+  pointer-events: none;
+  z-index: 1;
+  animation: rise linear forwards;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) rotate(0);
+    opacity: 0;
   }
-  50% {
-    transform: translateY(-20px) rotate(7deg);
+  15% { opacity: .6; }
+  85% { opacity: .5; }
+  100% {
+    transform: translateY(-110vh) rotate(45deg);
+    opacity: 0;
   }
 }
+
+/* GLASS CARDS */
 .glass {
-  max-width: 720px;
-  width: 100%;
-  padding: 35px;
-  border: 1px solid #e8c67b77;
-  border-radius: 20px;
-  background: #ffffff0a;
-  box-shadow: 0 25px 65px #0006;
+  width: min(720px, 100%);
+  padding: 40px 30px;
+  background: #ffffff0b;
+  border: 1px solid #e8c88755;
+  border-radius: 25px;
   backdrop-filter: blur(12px);
+  box-shadow: 0 20px 70px #0007;
 }
+
+.glass p {
+  color: #d3d9e8;
+}
+
+/* MEMORY GALLERY */
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
-  margin: 30px 0;
+  gap: 22px;
+  margin: 35px 0;
+  perspective: 1000px;
 }
-.photo {
-  width: 190px;
-  height: 250px;
-  border: 3px solid var(--gold);
-  border-radius: 12px;
-  overflow: hidden;
-  background: #1b315c;
-  transform: perspective(700px) rotateY(-7deg);
+
+.memory {
+  width: 210px;
+  background: #fff1db;
+  padding: 10px 10px 20px;
+  color: #26304a;
+  border-radius: 5px;
+  box-shadow: 0 20px 50px #0008;
+  transition: transform .5s;
+}
+
+.memory:nth-child(1) {
+  transform: rotate(-7deg);
+}
+.memory:nth-child(2) {
+  transform: translateY(15px) rotate(4deg);
+}
+.memory:nth-child(3) {
+  transform: rotate(-3deg);
+}
+
+.memory:hover {
+  transform: translateY(-20px) rotate(0)
+    scale(1.07);
+}
+
+.memory img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  background: #b8b1bd;
+}
+
+.memory p {
+  font-family: 'Great Vibes', cursive;
+  font-size: 25px;
+  margin: 10px 0 0;
+}
+
+/* REASONS I LOVE YOU */
+.reason-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  width: min(700px, 100%);
+  margin: 35px auto;
+}
+
+.reason {
+  aspect-ratio: 1;
+  background: #ffffff0b;
+  border: 1px solid #e8c88750;
+  border-radius: 18px;
+  color: var(--pink);
+  font-size: 35px;
   transition: .4s;
 }
-.photo:hover {
-  transform: perspective(700px) rotateY(0)
-    translateY(-10px);
+
+.reason:hover {
+  transform: translateY(-8px) rotate(5deg);
+  background: #ffabc820;
+  box-shadow: 0 0 30px #ffabc830;
 }
-.photo img {
+
+.reason.opened {
+  background: #ffabc82c;
+  color: #fff;
+}
+
+.reason-message {
+  max-width: 580px;
+  min-height: 90px;
+  padding: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--gold);
+  transition: .3s;
+}
+
+/* GRADUATION */
+.grad-icon {
+  font-size: 100px;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 25px #e8c88780);
+}
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+/* ENVELOPE */
+.envelope-stage {
+  width: min(350px, 85vw);
+  height: 240px;
+  margin: 50px auto 20px;
+  perspective: 1000px;
+  position: relative;
+}
+
+.envelope {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 220px;
+  background: #263c70;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px #0008;
+  border: 1px solid var(--gold);
+  cursor: pointer;
 }
-.letter {
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #354e83;
+  clip-path: polygon(0 0,100% 0,50% 60%);
+  transform-origin: top;
+  transition: transform 1s;
+  z-index: 3;
+}
+
+.envelope::after {
+  content: "♡";
+  position: absolute;
+  top: 85px;
+  left: calc(50% - 20px);
+  font-size: 40px;
+  color: var(--gold);
+  z-index: 4;
+  transition: opacity .5s;
+}
+
+.envelope.open::before {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.envelope.open::after { opacity: 0; }
+
+.love-letter {
   display: none;
-  max-width: 600px;
-  padding: 30px;
-  margin: 20px auto;
+  width: min(650px, 100%);
+  padding: 35px;
+  background: #fff1dc;
+  color: #29344e;
   border-radius: 12px;
-  background: #fff2d9;
-  color: #273451;
-  animation: appear .8s ease;
+  margin: 25px auto;
+  text-align: left;
+  box-shadow: 0 15px 60px #0006;
+  animation: letterReveal 1s ease;
 }
-@keyframes appear {
+
+.love-letter h2 {
+  color: #8c5973;
+  text-align: center;
+}
+
+.love-letter p { line-height: 2; }
+
+@keyframes letterReveal {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(50px) scale(.9);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
-.star {
-  position: fixed;
-  pointer-events: none;
-  color: var(--gold);
-  z-index: 0;
-  animation: twinkle 3s infinite alternate;
+
+/* FUTURE */
+.dreams {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  max-width: 850px;
+  margin: 35px 0;
 }
-@keyframes twinkle {
-  from { opacity: .1; }
-  to { opacity: .9; }
+
+.dream {
+  width: 220px;
+  padding: 30px 20px;
+  border: 1px solid #e8c88750;
+  border-radius: 20px;
+  background: #ffffff09;
+  transition: .4s;
 }
-section > * {
-  position: relative;
-  z-index: 1;
+
+.dream:hover {
+  transform: translateY(-10px);
+  background: #ffffff15;
 }
-.music {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 10;
-  padding: 12px 18px;
-  margin: 0;
-}
-#confetti {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 20;
-}
+
+.dream span { font-size: 40px; }
+
+/* FINAL SURPRISE */
 .final {
   background: radial-gradient(
     ellipse at center,
-    #1c3059,
-    #080e21 75%
+    #27345d,
+    #070b1d 75%
   );
 }
-@media(max-width:600px) {
-  .photo { width: 140px; height: 190px; }
-  .glass { padding: 22px; }
-  p { font-size: 15px; }
+
+.final-message {
+  display: none;
+  max-width: 650px;
+  animation: letterReveal 1.2s ease;
 }
+
+.final-message h1 {
+  color: var(--gold);
+}
+
+.final-heart {
+  font-size: 90px;
+  color: var(--pink);
+  animation: heartbeat 2s infinite;
+}
+
+/* MUSIC */
+.music-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 20;
+  padding: 12px 18px;
+  border-radius: 30px;
+  background: #111d3bdf;
+  color: var(--gold);
+  border: 1px solid #e8c88770;
+  backdrop-filter: blur(10px);
+}
+
+/* CONFETTI */
+.confetti-piece {
+  position: fixed;
+  top: -15px;
+  z-index: 30;
+  pointer-events: none;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@media(max-width:650px) {
+  .reason-grid {
+    grid-template-columns: repeat(5,1fr);
+    gap: 7px;
+  }
+  .reason {
+    font-size: 24px;
+    border-radius: 10px;
+  }
+  .memory { width: 145px; }
+  .memory img { height: 160px; }
+  .glass { padding: 25px 20px; }
+  .dream { width: 145px; padding: 20px 12px; }
+  .dream span { font-size: 30px; }
+  .dream p { font-size: 13px; }
+}
+
 @media(prefers-reduced-motion:reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
     scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 </style>
@@ -188,278 +496,595 @@ section > * {
 
 <body>
 
-<canvas id="confetti"></canvas>
+<canvas id="stars"></canvas>
 
-<button class="music" id="musicBtn"
-onclick="toggleMusic()">♫ Play Music</button>
+<button class="music-btn" id="musicBtn"
+onclick="toggleMusic()">
+♫ Play Our Song
+</button>
 
-<audio id="song" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+<audio id="music" src="music.mp3" loop></audio>
 
-<!-- FIRST SCREEN -->
+<!-- 1. OPENING -->
 <section class="hero" id="home">
-  <div class="cap">🎓</div>
-  <p class="gold">A LITTLE SURPRISE FOR YOU</p>
+  <div class="glow"></div>
+
+  <div class="hero-heart">♡</div>
+
+  <p class="section-tag">
+    A LITTLE WORLD MADE JUST FOR YOU
+  </p>
+
   <h1>
     To My Favourite<br>
-    <span class="gold">Graduate</span>
+    <span class="gold">Person</span>
   </h1>
+
+  <div class="script">My Love ♡</div>
+
   <p>
-    One big achievement.
-    A thousand reasons to celebrate you.
+    Out of everyone in this world,
+    somehow I found you.
+    And loving you has become one of
+    the most beautiful parts of my life.
   </p>
-  <button onclick="startSurprise()">
-    Open Your Surprise 💙
+
+  <button class="btn" onclick="startStory()">
+    Enter Our Little Universe ✨
   </button>
-  <p>Made with love, just for you ♡</p>
 </section>
 
-<!-- GRADUATION MESSAGE -->
-<section id="celebrate">
-  <div class="glass">
-    <p class="gold">THIS MOMENT IS YOURS</p>
-    <div class="cap">✨</div>
-    <h2>You Did It!</h2>
+<!-- 2. LOVE INTRO -->
+<section id="love">
+  <div class="glass reveal">
+    <p class="section-tag">FIRST, I WANT YOU TO KNOW</p>
+
+    <h2>
+      You Mean <span class="pink">Everything</span>
+      To Me
+    </h2>
+
     <p>
-      My love, I am so proud of you.
-      Every late night, every challenge,
-      and every little effort has brought
-      you to this beautiful moment.
+      Sometimes I wish I could put all my
+      feelings into words.
     </p>
+
     <p>
-      You deserve to celebrate how far
-      you have come.
-      This is only the beginning of
-      something wonderful.
+      I love you in the little moments,
+      in the ordinary days, in the silly
+      conversations, and in all the
+      memories we make together.
     </p>
-    <h2 class="gold">Congratulations! 🎓</h2>
+
+    <p>
+      You are so much more than my boyfriend.
+      You are my favourite person,
+      my happiness, and someone I am
+      incredibly grateful to have in my life.
+    </p>
+
+    <div class="script">I'm so lucky to love you.</div>
   </div>
-  <button onclick="go('memories')">
-    See Our Memories →
+
+  <button class="btn" onclick="go('memories')">
+    Our Memories ♡
   </button>
 </section>
 
-<!-- PHOTO GALLERY -->
+<!-- 3. MEMORIES -->
 <section id="memories">
-  <p class="gold">OUR LITTLE WORLD</p>
-  <h2>Our Beautiful Memories ♡</h2>
-  <p>
-    Some moments are too special to forget.
-    These are some of my favourites.
+  <p class="section-tag reveal">OUR LITTLE UNIVERSE</p>
+
+  <h2 class="reveal">
+    Every Moment With <span class="gold">You</span>
+  </h2>
+
+  <p class="reveal">
+    If I could collect every happy moment,
+    I'd keep all the ones with you.
   </p>
 
-  <div class="gallery">
-    <div class="photo">
-      <img src="photo1.jpg"
-           alt="Our first favourite memory">
+  <div class="gallery reveal">
+    <div class="memory">
+      <img src="photo1.jpg" alt="Our memory one">
+      <p>My favourite day ♡</p>
     </div>
-    <div class="photo">
-      <img src="photo2.jpg"
-           alt="Our second favourite memory">
+
+    <div class="memory">
+      <img src="photo2.jpg" alt="Our memory two">
+      <p>Just us two ♡</p>
     </div>
-    <div class="photo">
-      <img src="photo3.jpg"
-           alt="Our third favourite memory">
+
+    <div class="memory">
+      <img src="photo3.jpg" alt="Our memory three">
+      <p>Forever special ♡</p>
     </div>
   </div>
 
-  <button onclick="go('letterSection')">
-    I Have Something To Tell You 💌
+  <button class="btn" onclick="go('reasons')">
+    Why I Love You →
   </button>
 </section>
 
-<!-- HIDDEN LOVE LETTER -->
-<section id="letterSection">
-  <div class="cap">💌</div>
-  <p class="gold">SOMETHING FROM MY HEART</p>
-  <h2>A Letter For You</h2>
-  <p>
-    There are a few things I want
-    you to always remember.
+<!-- 4. TEN REASONS -->
+<section id="reasons">
+  <p class="section-tag reveal">
+    TEN LITTLE REASONS
   </p>
 
-  <button onclick="openLetter()">
-    Open My Heart ♡
+  <h2 class="reveal">
+    Things I <span class="pink">Love</span>
+    About You
+  </h2>
+
+  <p>Tap each heart to discover something ♡</p>
+
+  <div class="reason-grid">
+    <button class="reason" onclick="showReason(0,this)">♡</button>
+    <button class="reason" onclick="showReason(1,this)">♡</button>
+    <button class="reason" onclick="showReason(2,this)">♡</button>
+    <button class="reason" onclick="showReason(3,this)">♡</button>
+    <button class="reason" onclick="showReason(4,this)">♡</button>
+    <button class="reason" onclick="showReason(5,this)">♡</button>
+    <button class="reason" onclick="showReason(6,this)">♡</button>
+    <button class="reason" onclick="showReason(7,this)">♡</button>
+    <button class="reason" onclick="showReason(8,this)">♡</button>
+    <button class="reason" onclick="showReason(9,this)">♡</button>
+  </div>
+
+  <div class="reason-message" id="reasonMessage">
+    Every heart holds a little piece of my love.
+  </div>
+
+  <button class="btn" onclick="go('graduation')">
+    Something I'm Proud Of 🎓
+  </button>
+</section>
+
+<!-- 5. GRADUATION -->
+<section id="graduation">
+  <div class="glass reveal">
+
+    <div class="grad-icon">🎓</div>
+
+    <p class="section-tag">
+      ONE OF YOUR BEAUTIFUL MILESTONES
+    </p>
+
+    <h2>
+      I'm So <span class="gold">Proud</span>
+      Of You
+    </h2>
+
+    <p>
+      Happy Higher Diploma Convocation,
+      my love!
+    </p>
+
+    <p>
+      Seeing you reach this milestone
+      makes me so happy.
+      I know that behind this achievement
+      are your efforts, determination,
+      and all the times you kept going.
+    </p>
+
+    <p>
+      But I want you to know something.
+      I'm not only proud of what you've achieved.
+      I'm proud of the person you are.
+    </p>
+
+    <p>
+      This is one beautiful chapter,
+      and I can't wait to see all the
+      amazing things waiting for you.
+    </p>
+
+    <div class="script">
+      Forever your biggest cheerleader ♡
+    </div>
+
+    <button class="btn" onclick="celebrate()">
+      Celebrate With Me ✨
+    </button>
+  </div>
+
+  <button class="btn" onclick="go('letterSection')">
+    A Letter From My Heart 💌
+  </button>
+</section>
+
+<!-- 6. SECRET LETTER -->
+<section id="letterSection">
+  <p class="section-tag">SOMETHING JUST FOR YOU</p>
+
+  <h2>
+    A Letter From <span class="pink">My Heart</span>
+  </h2>
+
+  <p>Tap the envelope to open my letter.</p>
+
+  <div class="envelope-stage">
+    <div class="envelope" id="envelope"
+      role="button" tabindex="0"
+      aria-label="Open love letter"
+      onclick="openLetter()"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLetter()}">
+    </div>
+  </div>
+
+  <div class="love-letter" id="loveLetter">
+    <h2>My Love, ♡</h2>
+
+    <p>
+      If I could give you one thing in
+      this world, it would be the chance
+      to see yourself through my eyes.
+    </p>
+
+    <p>
+      Then you would understand how
+      incredibly special you are to me.
+    </p>
+
+    <p>
+      I love your smile, your laugh,
+      your little habits, and the way
+      you make ordinary moments feel
+      so beautiful.
+    </p>
+
+    <p>
+      I love the person you are,
+      and I love that I get to share
+      even a little part of this
+      beautiful life with you.
+    </p>
+
+    <p>
+      I know life won't always be easy.
+      There will be difficult days,
+      unexpected changes, and moments
+      when things don't go as planned.
+    </p>
+
+    <p>
+      But I hope you always remember
+      that you are loved, appreciated,
+      and capable of so much more
+      than you sometimes realise.
+    </p>
+
+    <p>
+      I want to make more memories
+      with you, laugh at silly things,
+      celebrate your happiness,
+      and be there when you need
+      someone beside you.
+    </p>
+
+    <p>
+      And if I had to choose again,
+      out of everyone in the world,
+      I'd still choose you.
+    </p>
+
+    <p>
+      A thousand times.
+      In a thousand different ways.
+    </p>
+
+    <p>
+      Thank you for being you,
+      and for being such a beautiful
+      part of my life.
+    </p>
+
+    <p>
+      <b>
+        I love you more than
+        words can ever explain. ❤️
+      </b>
+    </p>
+
+    <p style="text-align:right">
+      Forever yours,<br>
+      Your girl ♡
+    </p>
+  </div>
+
+  <button class="btn" onclick="go('future')">
+    Our Future Together →
+  </button>
+</section>
+
+<!-- 7. FUTURE DREAMS -->
+<section id="future">
+  <p class="section-tag reveal">
+    SO MANY MOMENTS STILL TO COME
+  </p>
+
+  <h2 class="reveal">
+    Our Little <span class="gold">Future</span>
+  </h2>
+
+  <p class="reveal">
+    There are still so many things
+    I want to experience with you.
+  </p>
+
+  <div class="dreams reveal">
+    <div class="dream">
+      <span>🌍</span>
+      <h3>New Adventures</h3>
+      <p>Exploring beautiful places together.</p>
+    </div>
+
+    <div class="dream">
+      <span>📸</span>
+      <h3>More Memories</h3>
+      <p>Taking pictures and collecting little moments.</p>
+    </div>
+
+    <div class="dream">
+      <span>🎉</span>
+      <h3>Your Success</h3>
+      <p>Celebrating every dream you achieve.</p>
+    </div>
+
+    <div class="dream">
+      <span>☕</span>
+      <h3>Simple Days</h3>
+      <p>Laughing, talking, and enjoying life together.</p>
+    </div>
+  </div>
+
+  <div class="script reveal">
+    So many more memories to make ♡
+  </div>
+
+  <button class="btn" onclick="go('finale')">
+    One Last Surprise ❤️
+  </button>
+</section>
+
+<!-- 8. FINAL SURPRISE -->
+<section class="final" id="finale">
+  <div class="final-heart">♡</div>
+
+  <p class="section-tag">
+    ONE LAST THING, MY LOVE
+  </p>
+
+  <h2>Do You Know How Much I Love You?</h2>
+
+  <button class="btn" id="finalBtn"
+    onclick="finalSurprise()">
+    Tap To Find Out ❤️
   </button>
 
-  <div class="letter" id="letter">
-    <h2>My Love, 💙</h2>
+  <div class="final-message" id="finalMessage">
+    <h1>
+      In Every Lifetime,<br>
+      <span class="pink">I'd Choose You.</span>
+    </h1>
 
     <p>
-      Today is your special day, and
-      I wish you could see yourself
-      through my eyes.
+      If there were a thousand worlds,
+      a thousand different stories,
+      and a thousand chances to fall in love...
     </p>
 
     <p>
-      I see someone who is strong,
-      hardworking, kind, and capable
-      of achieving so many beautiful things.
+      I'd still hope that somehow,
+      somewhere, I'd find you.
     </p>
 
-    <p>
-      I'm so proud of everything
-      you've accomplished.
-      I hope you never stop believing
-      in yourself, even when the
-      journey feels difficult.
+    <div class="script">
+      Always you. Only you. ♡
+    </div>
+
+    <p class="gold">
+      I love you, my favourite person.
     </p>
 
-    <p>
-      As you begin this new chapter,
-      remember that I'll always be
-      cheering for you.
-    </p>
-
-    <p>
-      Congratulations, my favourite graduate.
-      You deserve all the happiness
-      and success waiting for you.
-    </p>
-
-    <p><b>With all my love, ♡</b></p>
-
-    <button onclick="go('finale')">
-      One Last Surprise →
+    <button class="btn" onclick="go('home')">
+      Experience Our Story Again ↺
     </button>
   </div>
 </section>
 
-<!-- FINAL SCREEN -->
-<section class="final" id="finale">
-  <div class="cap">💙</div>
-  <p class="gold">YOUR NEXT CHAPTER BEGINS</p>
-
-  <h1>
-    The Best Is<br>
-    <span class="gold">Yet To Come</span>
-  </h1>
-
-  <p>
-    Keep chasing your dreams.
-    Keep believing in yourself.
-    And never forget how proud
-    I am of you.
-  </p>
-
-  <h2 class="gold">
-    Congratulations, My Love! 🎓
-  </h2>
-
-  <button onclick="go('home')">
-    Experience Again ↺
-  </button>
-</section>
-
 <script>
+/* SMOOTH NAVIGATION */
 function go(id) {
   document.getElementById(id)
-    .scrollIntoView({behavior:"smooth"});
+    .scrollIntoView({ behavior: "smooth" });
 }
 
-function startSurprise() {
-  launchConfetti();
-  go("celebrate");
+function startStory() {
+  burstHearts(18);
+  go("love");
 }
 
-function openLetter() {
-  const letter = document.getElementById("letter");
-  letter.style.display = "block";
-  letter.scrollIntoView({
-    behavior:"smooth",
-    block:"center"
-  });
-}
+/* SCROLL REVEAL */
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  { threshold: .12 }
+);
 
-const song = document.getElementById("song");
-const musicBtn = document.getElementById("musicBtn");
+document.querySelectorAll(".reveal")
+  .forEach(el => observer.observe(el));
 
-async function toggleMusic() {
-  if (song.paused) {
-    try {
-      await song.play();
-      musicBtn.textContent = "♫ Pause Music";
-    } catch (error) {
-      alert("Please upload music.mp3 first.");
-    }
-  } else {
-    song.pause();
-    musicBtn.textContent = "♫ Play Music";
-  }
-}
-
-// Animated stars
-for (let i = 0; i < 55; i++) {
-  const star = document.createElement("span");
-  star.className = "star";
-  star.textContent = "✦";
-  star.style.left = Math.random()*100 + "vw";
-  star.style.top = Math.random()*100 + "vh";
-  star.style.fontSize =
-    (5 + Math.random()*10) + "px";
-  star.style.animationDelay =
-    Math.random()*4 + "s";
-  document.body.appendChild(star);
-}
-
-// Graduation confetti
-const canvas = document.getElementById("confetti");
+/* ANIMATED STARFIELD */
+const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
+let stars = [];
 
-function launchConfetti() {
+function resizeStars() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
+  stars = Array.from({length: 95}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 1.5 + .3,
+    speed: Math.random() * .02 + .005,
+    phase: Math.random() * Math.PI * 2
+  }));
+}
+
+function drawStars(time) {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  stars.forEach(s => {
+    const opacity = .35 +
+      .4 * Math.sin(time * s.speed / 20 + s.phase);
+
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.size,0,Math.PI*2);
+    ctx.fillStyle =
+      `rgba(255,226,173,${Math.max(.05,opacity)})`;
+    ctx.fill();
+  });
+
+  requestAnimationFrame(drawStars);
+}
+
+resizeStars();
+window.addEventListener("resize",resizeStars);
+requestAnimationFrame(drawStars);
+
+/* FLOATING HEARTS */
+function createHeart() {
+  if (document.hidden) return;
+
+  const heart = document.createElement("span");
+  heart.className = "floating-heart";
+  heart.textContent = Math.random() > .5 ? "♡" : "♥";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize =
+    (12 + Math.random()*18) + "px";
+  heart.style.color =
+    Math.random() > .5 ? "#ffabc8" : "#e8c887";
+  heart.style.animationDuration =
+    (7 + Math.random()*7) + "s";
+
+  document.body.appendChild(heart);
+  heart.addEventListener("animationend",()=>heart.remove());
+}
+
+setInterval(createHeart, 900);
+
+/* REASONS */
+const reasons = [
+  "I love your smile. It makes my world brighter. ♡",
+  "I love the way you make me laugh.",
+  "I love your kindness and the heart you have.",
+  "I love our silly little conversations.",
+  "I love how special ordinary moments feel with you.",
+  "I love your determination and your dreams.",
+  "I love the memories we've made together.",
+  "I love all your little habits that make you, you.",
+  "I love how grateful I feel to have you in my life.",
+  "And most of all, I love you simply because you're YOU. ❤️"
+];
+
+function showReason(index, button) {
+  document.getElementById("reasonMessage")
+    .textContent = reasons[index];
+
+  button.classList.add("opened");
+  button.textContent = "♥";
+  burstHearts(6);
+}
+
+/* CONFETTI */
+function celebrate() {
   const colors = [
-    "#e8c67b",
-    "#ffffff",
-    "#8da9ed",
-    "#f5dfa2"
+    "#e8c887","#ffabc8","#ffffff","#7eabff"
   ];
 
-  let pieces = [];
+  for (let i=0; i<100; i++) {
+    const piece = document.createElement("span");
+    piece.className = "confetti-piece";
+    piece.style.left = Math.random()*100+"vw";
+    piece.style.width = (5+Math.random()*6)+"px";
+    piece.style.height = (8+Math.random()*8)+"px";
+    piece.style.background =
+      colors[Math.floor(Math.random()*colors.length)];
+    piece.style.animationDuration =
+      (2+Math.random()*3)+"s";
+    piece.style.animationDelay =
+      Math.random()*.6+"s";
 
-  for (let i = 0; i < 110; i++) {
-    pieces.push({
-      x: Math.random()*canvas.width,
-      y: -Math.random()*canvas.height,
-      speed: 2+Math.random()*4,
-      size: 3+Math.random()*6,
-      color: colors[
-        Math.floor(Math.random()*colors.length)
-      ]
-    });
+    document.body.appendChild(piece);
+    piece.addEventListener("animationend",()=>piece.remove());
   }
+}
 
-  let frames = 0;
+/* ENVELOPE */
+let letterOpened = false;
 
-  function animate() {
-    ctx.clearRect(
-      0,0,canvas.width,canvas.height
-    );
+function openLetter() {
+  if (letterOpened) return;
+  letterOpened = true;
 
-    pieces.forEach(p => {
-      p.y += p.speed;
-      ctx.fillStyle = p.color;
-      ctx.fillRect(p.x,p.y,p.size,p.size);
+  document.getElementById("envelope")
+    .classList.add("open");
+
+  setTimeout(() => {
+    const letter = document.getElementById("loveLetter");
+    letter.style.display = "block";
+    letter.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
     });
+  }, 850);
+}
 
-    frames++;
+/* FINAL SURPRISE */
+function finalSurprise() {
+  document.getElementById("finalMessage")
+    .style.display = "block";
 
-    if (frames < 230) {
-      requestAnimationFrame(animate);
-    } else {
-      ctx.clearRect(
-        0,0,canvas.width,canvas.height
-      );
+  document.getElementById("finalBtn")
+    .style.display = "none";
+
+  celebrate();
+  burstHearts(30);
+}
+
+/* HEART BURST */
+function burstHearts(count) {
+  for (let i=0; i<count; i++) {
+    setTimeout(createHeart,i*80);
+  }
+}
+
+/* MUSIC */
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+async function toggleMusic() {
+  if (music.paused) {
+    try {
+      await music.play();
+      musicBtn.textContent = "♫ Pause Music";
+    } catch(e) {
+      alert("Upload a file named music.mp3 first.");
     }
+  } else {
+    music.pause();
+    musicBtn.textContent = "♫ Play Our Song";
   }
-
-  animate();
 }
 </script>
-
 </body>
 </html>
-
