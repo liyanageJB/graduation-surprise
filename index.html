@@ -1,1 +1,465 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Favourite Graduate 💙</title>
+
+<style>
+:root {
+  --navy: #080e21;
+  --blue: #15264b;
+  --gold: #e8c67b;
+  --cream: #fff4de;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--navy);
+  color: var(--cream);
+  font-family: Georgia, serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+section {
+  min-height: 100svh;
+  padding: 90px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+h1 {
+  font-size: clamp(45px, 9vw, 85px);
+  line-height: 1.1;
+  margin: 20px 0;
+}
+h2 {
+  font-size: clamp(32px, 6vw, 55px);
+  margin: 15px 0;
+}
+p {
+  max-width: 550px;
+  line-height: 1.8;
+  font-size: 17px;
+}
+.gold { color: var(--gold); }
+button {
+  background: linear-gradient(120deg,#f8dfa2,#c99d4b);
+  border: 0;
+  border-radius: 30px;
+  padding: 15px 25px;
+  margin: 20px 0;
+  color: #14213b;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .3s;
+}
+button:hover { transform: scale(1.06); }
+.hero {
+  background: radial-gradient(
+    ellipse at center,
+    #263e77 0%,
+    #080e21 75%
+  );
+}
+.cap {
+  font-size: 105px;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 25px #e8c67b60);
+}
+@keyframes float {
+  0%,100% {
+    transform: translateY(0) rotate(-7deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(7deg);
+  }
+}
+.glass {
+  max-width: 720px;
+  width: 100%;
+  padding: 35px;
+  border: 1px solid #e8c67b77;
+  border-radius: 20px;
+  background: #ffffff0a;
+  box-shadow: 0 25px 65px #0006;
+  backdrop-filter: blur(12px);
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 30px 0;
+}
+.photo {
+  width: 190px;
+  height: 250px;
+  border: 3px solid var(--gold);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1b315c;
+  transform: perspective(700px) rotateY(-7deg);
+  transition: .4s;
+}
+.photo:hover {
+  transform: perspective(700px) rotateY(0)
+    translateY(-10px);
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.letter {
+  display: none;
+  max-width: 600px;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 12px;
+  background: #fff2d9;
+  color: #273451;
+  animation: appear .8s ease;
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.star {
+  position: fixed;
+  pointer-events: none;
+  color: var(--gold);
+  z-index: 0;
+  animation: twinkle 3s infinite alternate;
+}
+@keyframes twinkle {
+  from { opacity: .1; }
+  to { opacity: .9; }
+}
+section > * {
+  position: relative;
+  z-index: 1;
+}
+.music {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  padding: 12px 18px;
+  margin: 0;
+}
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+.final {
+  background: radial-gradient(
+    ellipse at center,
+    #1c3059,
+    #080e21 75%
+  );
+}
+@media(max-width:600px) {
+  .photo { width: 140px; height: 190px; }
+  .glass { padding: 22px; }
+  p { font-size: 15px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<button class="music" id="musicBtn"
+onclick="toggleMusic()">♫ Play Music</button>
+
+<audio id="song" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- FIRST SCREEN -->
+<section class="hero" id="home">
+  <div class="cap">🎓</div>
+  <p class="gold">A LITTLE SURPRISE FOR YOU</p>
+  <h1>
+    To My Favourite<br>
+    <span class="gold">Graduate</span>
+  </h1>
+  <p>
+    One big achievement.
+    A thousand reasons to celebrate you.
+  </p>
+  <button onclick="startSurprise()">
+    Open Your Surprise 💙
+  </button>
+  <p>Made with love, just for you ♡</p>
+</section>
+
+<!-- GRADUATION MESSAGE -->
+<section id="celebrate">
+  <div class="glass">
+    <p class="gold">THIS MOMENT IS YOURS</p>
+    <div class="cap">✨</div>
+    <h2>You Did It!</h2>
+    <p>
+      My love, I am so proud of you.
+      Every late night, every challenge,
+      and every little effort has brought
+      you to this beautiful moment.
+    </p>
+    <p>
+      You deserve to celebrate how far
+      you have come.
+      This is only the beginning of
+      something wonderful.
+    </p>
+    <h2 class="gold">Congratulations! 🎓</h2>
+  </div>
+  <button onclick="go('memories')">
+    See Our Memories →
+  </button>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section id="memories">
+  <p class="gold">OUR LITTLE WORLD</p>
+  <h2>Our Beautiful Memories ♡</h2>
+  <p>
+    Some moments are too special to forget.
+    These are some of my favourites.
+  </p>
+
+  <div class="gallery">
+    <div class="photo">
+      <img src="photo1.jpg"
+           alt="Our first favourite memory">
+    </div>
+    <div class="photo">
+      <img src="photo2.jpg"
+           alt="Our second favourite memory">
+    </div>
+    <div class="photo">
+      <img src="photo3.jpg"
+           alt="Our third favourite memory">
+    </div>
+  </div>
+
+  <button onclick="go('letterSection')">
+    I Have Something To Tell You 💌
+  </button>
+</section>
+
+<!-- HIDDEN LOVE LETTER -->
+<section id="letterSection">
+  <div class="cap">💌</div>
+  <p class="gold">SOMETHING FROM MY HEART</p>
+  <h2>A Letter For You</h2>
+  <p>
+    There are a few things I want
+    you to always remember.
+  </p>
+
+  <button onclick="openLetter()">
+    Open My Heart ♡
+  </button>
+
+  <div class="letter" id="letter">
+    <h2>My Love, 💙</h2>
+
+    <p>
+      Today is your special day, and
+      I wish you could see yourself
+      through my eyes.
+    </p>
+
+    <p>
+      I see someone who is strong,
+      hardworking, kind, and capable
+      of achieving so many beautiful things.
+    </p>
+
+    <p>
+      I'm so proud of everything
+      you've accomplished.
+      I hope you never stop believing
+      in yourself, even when the
+      journey feels difficult.
+    </p>
+
+    <p>
+      As you begin this new chapter,
+      remember that I'll always be
+      cheering for you.
+    </p>
+
+    <p>
+      Congratulations, my favourite graduate.
+      You deserve all the happiness
+      and success waiting for you.
+    </p>
+
+    <p><b>With all my love, ♡</b></p>
+
+    <button onclick="go('finale')">
+      One Last Surprise →
+    </button>
+  </div>
+</section>
+
+<!-- FINAL SCREEN -->
+<section class="final" id="finale">
+  <div class="cap">💙</div>
+  <p class="gold">YOUR NEXT CHAPTER BEGINS</p>
+
+  <h1>
+    The Best Is<br>
+    <span class="gold">Yet To Come</span>
+  </h1>
+
+  <p>
+    Keep chasing your dreams.
+    Keep believing in yourself.
+    And never forget how proud
+    I am of you.
+  </p>
+
+  <h2 class="gold">
+    Congratulations, My Love! 🎓
+  </h2>
+
+  <button onclick="go('home')">
+    Experience Again ↺
+  </button>
+</section>
+
+<script>
+function go(id) {
+  document.getElementById(id)
+    .scrollIntoView({behavior:"smooth"});
+}
+
+function startSurprise() {
+  launchConfetti();
+  go("celebrate");
+}
+
+function openLetter() {
+  const letter = document.getElementById("letter");
+  letter.style.display = "block";
+  letter.scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
+}
+
+const song = document.getElementById("song");
+const musicBtn = document.getElementById("musicBtn");
+
+async function toggleMusic() {
+  if (song.paused) {
+    try {
+      await song.play();
+      musicBtn.textContent = "♫ Pause Music";
+    } catch (error) {
+      alert("Please upload music.mp3 first.");
+    }
+  } else {
+    song.pause();
+    musicBtn.textContent = "♫ Play Music";
+  }
+}
+
+// Animated stars
+for (let i = 0; i < 55; i++) {
+  const star = document.createElement("span");
+  star.className = "star";
+  star.textContent = "✦";
+  star.style.left = Math.random()*100 + "vw";
+  star.style.top = Math.random()*100 + "vh";
+  star.style.fontSize =
+    (5 + Math.random()*10) + "px";
+  star.style.animationDelay =
+    Math.random()*4 + "s";
+  document.body.appendChild(star);
+}
+
+// Graduation confetti
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+function launchConfetti() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const colors = [
+    "#e8c67b",
+    "#ffffff",
+    "#8da9ed",
+    "#f5dfa2"
+  ];
+
+  let pieces = [];
+
+  for (let i = 0; i < 110; i++) {
+    pieces.push({
+      x: Math.random()*canvas.width,
+      y: -Math.random()*canvas.height,
+      speed: 2+Math.random()*4,
+      size: 3+Math.random()*6,
+      color: colors[
+        Math.floor(Math.random()*colors.length)
+      ]
+    });
+  }
+
+  let frames = 0;
+
+  function animate() {
+    ctx.clearRect(
+      0,0,canvas.width,canvas.height
+    );
+
+    pieces.forEach(p => {
+      p.y += p.speed;
+      ctx.fillStyle = p.color;
+      ctx.fillRect(p.x,p.y,p.size,p.size);
+    });
+
+    frames++;
+
+    if (frames < 230) {
+      requestAnimationFrame(animate);
+    } else {
+      ctx.clearRect(
+        0,0,canvas.width,canvas.height
+      );
+    }
+  }
+
+  animate();
+}
+</script>
+
+</body>
+</html>
+
